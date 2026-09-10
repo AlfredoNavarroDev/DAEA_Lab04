@@ -21,6 +21,7 @@ public partial class PedidoViewModel : ObservableObject
         ReporteDetalle = new ObservableCollection<DetallePedidoReporte>();
         FechaInicio = DateTime.Today.AddMonths(-1);
         FechaFin = DateTime.Today;
+        Cargar();
     }
 
     public ObservableCollection<Pedido> Pedidos { get; }
@@ -48,7 +49,9 @@ public partial class PedidoViewModel : ObservableObject
     [RelayCommand]
     private void Nuevo()
     {
-        PedidoSeleccionado = new Pedido { FechaPedido = DateTime.Today };
+        var nuevo = new Pedido { FechaPedido = DateTime.Today };
+        Pedidos.Add(nuevo);
+        PedidoSeleccionado = nuevo;
     }
 
     [RelayCommand]

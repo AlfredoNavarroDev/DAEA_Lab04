@@ -16,6 +16,7 @@ public partial class CategoriaViewModel : ObservableObject
     {
         _repository = repository;
         Categorias = new ObservableCollection<Categoria>();
+        Cargar();
     }
 
     public ObservableCollection<Categoria> Categorias { get; }
@@ -36,7 +37,9 @@ public partial class CategoriaViewModel : ObservableObject
     [RelayCommand]
     private void Nuevo()
     {
-        CategoriaSeleccionada = new Categoria();
+        var nueva = new Categoria();
+        Categorias.Add(nueva);
+        CategoriaSeleccionada = nueva;
     }
 
     [RelayCommand]

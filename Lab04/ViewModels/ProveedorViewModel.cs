@@ -16,6 +16,7 @@ public partial class ProveedorViewModel : ObservableObject
     {
         _repository = repository;
         Proveedores = new ObservableCollection<Proveedor>();
+        Cargar();
     }
 
     public ObservableCollection<Proveedor> Proveedores { get; }
@@ -52,7 +53,9 @@ public partial class ProveedorViewModel : ObservableObject
     [RelayCommand]
     private void Nuevo()
     {
-        ProveedorSeleccionado = new Proveedor();
+        var nuevo = new Proveedor();
+        Proveedores.Add(nuevo);
+        ProveedorSeleccionado = nuevo;
     }
 
     [RelayCommand]

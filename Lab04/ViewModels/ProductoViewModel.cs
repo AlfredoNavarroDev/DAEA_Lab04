@@ -16,6 +16,7 @@ public partial class ProductoViewModel : ObservableObject
     {
         _repository = repository;
         Productos = new ObservableCollection<Producto>();
+        Cargar();
     }
 
     public ObservableCollection<Producto> Productos { get; }
@@ -36,7 +37,9 @@ public partial class ProductoViewModel : ObservableObject
     [RelayCommand]
     private void Nuevo()
     {
-        ProductoSeleccionado = new Producto();
+        var nuevo = new Producto();
+        Productos.Add(nuevo);
+        ProductoSeleccionado = nuevo;
     }
 
     [RelayCommand]
